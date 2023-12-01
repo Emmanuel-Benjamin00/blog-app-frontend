@@ -7,13 +7,17 @@ import { Route, Navigate, Routes } from 'react-router-dom'
 import Blog from '../components/Blog'
 import Home from '../components/Home'
 import Header from '../components/Header'
+import ForgetPassword from '../components/ForgetPassword'
+import ResetPassword from '../components/ResetPassword'
 
 
 function AppRoutes() {
   return <>
     <Routes>
       <Route path='/create' element={<><Header/><Create/></>} />
+      <Route path='/forgetpassword' element={<ForgetPassword/>}/>
       <Route path='/dashboard' element={<><Header/><Dashboard /></>} />
+      <Route path='/reset-link' element={<ResetPassword/>}/>
       <Route path='/signup' element={<Signup />} />
       <Route path='/home' element={<><Header/><Home /></>} />
       <Route path='/blog/:id' element={<><Header/><Blog/></>} />

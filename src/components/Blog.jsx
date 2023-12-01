@@ -136,8 +136,7 @@ function AdminBlog() {
   let changeStatus = async (status) => {
     try {
       let res = await AxiosService.put(`/blogs/status/${blog._id}/${status}`)
-      if(res.status === 200)
-      {
+      if (res.status === 200) {
         getBlog()
       }
     } catch (error) {
@@ -149,17 +148,17 @@ function AdminBlog() {
   }
   return <div>
     <div className='blogs-wrapper'><BlogTile blog={blog} /> </div>
-    <div style={{textAlign:"center"}} >
+    <div style={{ textAlign: "center" }} >
       {
-        blog.status!=='pending' ? <Button variant='warning' onClick={()=>changeStatus('pending')}>Pending</Button> : <></>
+        blog.status !== 'pending' ? <Button variant='warning' onClick={() => changeStatus('pending')}>Pending</Button> : <></>
       }
       &nbsp;
       {
-        blog.status!== 'approved' ? <Button variant='success' onClick={()=>changeStatus('approved')}>Approve</Button> : <></>
+        blog.status !== 'approved' ? <Button variant='success' onClick={() => changeStatus('approved')}>Approve</Button> : <></>
       }
       &nbsp;
       {
-        blog.status!=='rejected' ?  <Button variant='danger' onClick={()=>changeStatus('rejected')}>Reject</Button>: <></>
+        blog.status !== 'rejected' ? <Button variant='danger' onClick={() => changeStatus('rejected')}>Reject</Button> : <></>
       }
     </div>
   </div>
