@@ -12,11 +12,13 @@ function Signup() {
   let [password, setPassword] = useState("")
   let [error, setError] = useState("")
   let [role, setRole] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
 
   let createUser = async (e) => {
     e.preventDefault()
     try {
+      setIsSubmitting(true);
         let res = await AxiosService.post('/user/signup', {
             firstName,
             lastName,
@@ -31,6 +33,9 @@ function Signup() {
     catch (error) {
         console.log(error.response)
         setError("User Already Exists")
+    }
+    finally {
+      setIsSubmitting(false);
     }
 }
 
@@ -72,8 +77,8 @@ let navigate = useNavigate()
           </FormGroup>
 
           <div id="signup-error" className='text-danger'>{error}</div>
-          <Button variant="primary" type="submit" className='button-login' onClick={(e) => createUser(e)}>
-            Submit
+          <Button variant="primary" type="submit" className='button-login' onClick={(e) => createUser(e)} disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit'}
           </Button>
         </Form>
         <div className='mt-2 text-primary fs-6 pointer' onClick={() => navigate("/")}>Back to Login Page</div>

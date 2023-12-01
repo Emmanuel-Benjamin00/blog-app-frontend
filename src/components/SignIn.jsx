@@ -11,10 +11,12 @@ function SignIn() {
   let [email, setEmail] = useState("")
   let [password, setPassword] = useState("")
   let navigate = useNavigate()
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   let handleLogin = async (e) => {
     e.preventDefault()
     try {
+      setIsSubmitting(true);
       let res = await AxiosService.post('/user/login', {
         email,
         password
@@ -33,6 +35,9 @@ function SignIn() {
       }
     } catch (error) {
       toast.error(error.response.data.message)
+    }
+    finally {
+      setIsSubmitting(false);
     }
   }
   return <>
@@ -53,8 +58,8 @@ function SignIn() {
                 <FormControl type="password" id="exampleInputPassword1" onChange={((e) => setPassword(e.target.value))} />
               </FormGroup>
               <div id='error' className='text-danger fw-bold '></div>
-              <Button variant="primary" className='button-login' type='submit' onClick={(e) => handleLogin(e)}>
-                Submit
+              <Button variant="primary" className='button-login' type='submit' onClick={(e) => handleLogin(e)}  disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Submit'}
               </Button>
             </Form>
             <div className='pointer' onClick={() => navigate("/forgetpassword")}>Forgot Password</div>
