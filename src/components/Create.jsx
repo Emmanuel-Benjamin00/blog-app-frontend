@@ -14,9 +14,11 @@ function Create() {
   let [description, setDescription] = useState("")
   let navigate = useNavigate()
   let logout = useLogOut()
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   let createBlog = async () => {
     try {
+      setIsSubmitting(true);
       let res = await AxiosService.post('/blogs/create', { title, imageUrl, description })
       if (res.status === 201)
       {
@@ -30,6 +32,9 @@ function Create() {
       if (error.response.status === 401) {
         logout()
       }
+    }
+    finally {
+      setIsSubmitting(false);
     }
   }
   return <div>
@@ -56,8 +61,8 @@ function Create() {
           <BlogTile blog={{ title, imageUrl, description }} />
         </div>
         <div style={{ textAlign: "center" }}>
-          <Button variant="primary" onClick={() => createBlog()}>
-            Submit
+          <Button variant="primary" onClick={() => createBlog()} disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit'}
           </Button>
         </div>
       </Form>

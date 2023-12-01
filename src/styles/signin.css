@@ -4,14 +4,14 @@
   }
 
   .login-section{
-    background-image: url("https://cdn.vox-cdn.com/thumbor/TxVf9NHFw9u3h1tbh_rOGcvEzss=/0x0:3000x2000/1200x675/filters:focal(1260x760:1740x1240)/cdn.vox-cdn.com/uploads/chorus_image/image/70875392/mcu_ladies.0.png");
+    background-image: url("../assets/pexels-justin-wolfert-14261918.jpg");
     background-size: cover;
 
   }
 
   .login-form{
     width: 45%;
-    background-color: rgba(255, 255, 255, 0.4); 
+    background-color: rgba(255, 255, 255, 0.7); 
     padding: 3%;
     border-radius: 50px;
     border: 3px solid rgb(255, 255, 255);
