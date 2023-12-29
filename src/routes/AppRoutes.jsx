@@ -9,7 +9,7 @@ import Home from '../components/Home'
 import Header from '../components/headers/Header'
 import ForgetPassword from '../components/ForgetPassword'
 import ResetPassword from '../components/ResetPassword'
-import Footer from '../components/footer'
+import Footer1 from '../components/Footer1'
 import BlogPost from '../components/BlogPost'
 import HeaderHome from '../components/headers/HeaderHome'
 import AllPosts from '../components/AllPosts'
@@ -22,9 +22,9 @@ function AppRoutes() {
       <Route path='/dashboard' element={<><Dashboard /></>} />
       <Route path='/reset-link' element={<ResetPassword/>}/>
       <Route path='/signup' element={<Signup />} />
-      <Route path='/home' element={<><HeaderHome/><Home /><Footer/></>} />
-      <Route path='/allposts' element={<><AllPosts /><Footer/></>} />
-      <Route path='/post' element={<><BlogPost/><Footer/></>} />
+      <Route path='/home' element={<><HeaderHome/><Home /><Footer1/></>} />
+      <Route path='/allposts' element={<><AllPosts /><Footer1/></>} />
+      <Route path='/post' element={<><BlogPost/><Footer1/></>} />
       <Route path='/blog/:id' element={<><Blog/></>} />
       <Route path='/' element={<SignIn />} />
       <Route path='/*' element={<Navigate to='/' />} />
