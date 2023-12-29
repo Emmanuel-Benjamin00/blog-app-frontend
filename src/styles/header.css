@@ -1,0 +1,43 @@
+/* .header-color {
+    color:white;
+} */
+
+
+
+.bordered-text-header {
+    background: #000; 
+    color: #fff; 
+    display: inline;
+    -webkit-background-clip: text;
+    background-clip: text; 
+    text-shadow: 2px 2px 4px #333; 
+  }
+
+  .bordered-text {
+    background: #000; 
+    color: #fff; 
+    display: inline;
+    -webkit-background-clip: text;
+    background-clip: text; 
+    text-shadow: 2px 2px 4px #333; 
+    font-size: 1.2em;
+    font-weight: 650;
+  }
+
+  /* Media query for screens smaller than 768px */
+@media (max-width: 767px) {
+  .imageOfPost{
+    width: 100% !important; 
+  }
+
+}
+
+/* Media query for screens between 768px and 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+ 
+}
+
+/* Media query for screens 992px and larger */
+@media (min-width: 992px) {
+  /* Keep the original styling for screens larger than 991px */
+}

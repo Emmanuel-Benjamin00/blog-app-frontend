@@ -7,6 +7,8 @@ import AxiosService from '../utils/ApiService'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
+import HeaderDashboard from './headers/HeaderDashboard'
+import BlogTileCreate from '../components/common/BlogTileCreate'
 
 
 function Blog() {
@@ -25,6 +27,7 @@ function Blog() {
 
 
 function EditBlog() {
+  let logout = useLogOut()
   let params = useParams()
   let [title, setTitle] = useState("")
   let [imageUrl, setImage] = useState("")
@@ -75,7 +78,8 @@ function EditBlog() {
     }
   }
   return <>
-    <Form>
+    <HeaderDashboard />
+    <Form className='container mt-4'>
       <Form.Group className="mb-3">
         <Form.Label>Title</Form.Label>
         <Form.Control type="text" value={title} placeholder="Enter Title" onChange={(e) => setTitle(e.target.value)} />
@@ -91,16 +95,18 @@ function EditBlog() {
         <Form.Control as="textarea" value={description} placeholder="Description" style={{ height: '100px' }} onChange={(e) => setDescription(e.target.value)} />
       </Form.Group>
 
-      <h2 style={{ textAlign: "center" }}>Preview</h2>
-      <div className='blogs-wrapper'>
-        <BlogTile blog={{ title, imageUrl, description }} />
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <Button variant="primary" onClick={() => editblog()}>
-          Submit
-        </Button>
-        &nbsp;
-        <Button variant='warning' onClick={() => navigate('/dashboard')}>Cancel</Button>
+      <div className='mt-5'>
+        <h2 style={{ textAlign: "center" }}>Preview</h2>
+        <div className='blogs-wrapper d-flex justify-content-center'>
+          <BlogTileCreate blog={{ title, imageUrl, description }} />
+        </div>
+        <div style={{ textAlign: "center" }} className='my-3 mb-5'>
+          <Button variant="primary" onClick={() => editblog()} >
+            Submit
+          </Button>
+          &nbsp;
+          <Button variant='warning' onClick={() => navigate('/dashboard')}>Cancel</Button>
+        </div>
       </div>
     </Form>
   </>
@@ -110,6 +116,8 @@ function EditBlog() {
 function AdminBlog() {
   let params = useParams()
   let [blog, setBlog] = useState({})
+  let navigate = useNavigate()
+
   let getBlog = async () => {
     try {
       let res = await AxiosService.get(`/blogs/${params.id}`)
@@ -146,8 +154,10 @@ function AdminBlog() {
       }
     }
   }
-  return <div>
-    <div className='blogs-wrapper'><BlogTile blog={blog} /> </div>
+  return <div className='d-flex flex-column justify-content-center align-items-center' style={{height: "100vh"}}>
+    <div className='blogs-wrapper' >
+      <BlogTileCreate blog={blog} />
+    </div>
     <div style={{ textAlign: "center" }} >
       {
         blog.status !== 'pending' ? <Button variant='warning' onClick={() => changeStatus('pending')}>Pending</Button> : <></>
@@ -160,6 +170,7 @@ function AdminBlog() {
       {
         blog.status !== 'rejected' ? <Button variant='danger' onClick={() => changeStatus('rejected')}>Reject</Button> : <></>
       }
+      <Button variant='primary' className='ms-2' onClick={() => navigate("/dashboard")}>Back</Button>
     </div>
   </div>
 }

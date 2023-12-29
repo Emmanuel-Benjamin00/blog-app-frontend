@@ -1,0 +1,31 @@
+.each-blog-style {
+    width: 60%;
+}
+
+.hover-effect:hover {
+    color: #0085A1;
+    cursor: pointer;
+}
+
+
+
+.cardImg-cont {}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 767px) {
+    .each-blog-style {
+        width: 100%;
+    }
+}
+
+/* Media query for screens between 768px and 991px */
+@media (min-width: 768px) and (max-width: 991px) {
+    .each-blog-style {
+        width: 80%;
+    }
+}
+
+/* Media query for screens 992px and larger */
+@media (min-width: 992px) {
+    /* Keep the original styling for screens larger than 991px */
+}

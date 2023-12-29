@@ -6,6 +6,8 @@ import AxiosService from '../utils/ApiService';
 import { useNavigate } from 'react-router-dom';
 import useLogOut from '../hooks/useLogOut';
 import { toast } from 'react-toastify';
+import HeaderDashboard from './headers/HeaderDashboard';
+import BlogTileCreate from './common/BlogTileCreate'
 
 
 function Create() {
@@ -20,14 +22,12 @@ function Create() {
     try {
       setIsSubmitting(true);
       let res = await AxiosService.post('/blogs/create', { title, imageUrl, description })
-      if (res.status === 201)
-      {
-          toast.success(res.data.message)
-          navigate('/dashboard')
+      if (res.status === 201) {
+        toast.success(res.data.message)
+        navigate('/dashboard')
       }
-    } 
-    catch (error)
-    {
+    }
+    catch (error) {
       toast.error(error.response.data.message)
       if (error.response.status === 401) {
         logout()
@@ -39,8 +39,9 @@ function Create() {
   }
   return <div>
     <div>
-      <h3 style={{ textAlign: "center" }}>Share your Thoughts</h3>
-      <Form>
+      <HeaderDashboard />
+      <h3 className='mt-3' style={{ textAlign: "center" }}>Share your Thoughts</h3>
+      <Form className='container'>
         <Form.Group className="mb-3">
           <Form.Label>Title</Form.Label>
           <Form.Control type="email" placeholder="Enter Title" onChange={(e) => setTitle(e.target.value)} />
@@ -56,14 +57,16 @@ function Create() {
           <Form.Control as="textarea" placeholder="Description" style={{ height: '100px' }} onChange={(e) => setDescription(e.target.value)} />
         </Form.Group>
 
-        <h2 style={{ textAlign: "center" }}>Preview</h2>
-        <div className='blogs-wrapper'>
-          <BlogTile blog={{ title, imageUrl, description }} />
-        </div>
-        <div style={{ textAlign: "center" }}>
-          <Button variant="primary" onClick={() => createBlog()} disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Submit'}
-          </Button>
+        <div className='mt-5'>
+          <h2 style={{ textAlign: "center" }}>Preview</h2>
+          <div className='blogs-wrapper d-flex justify-content-center'>
+            <BlogTileCreate blog={{ title, imageUrl, description }} />
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Button variant="primary" onClick={() => createBlog()} disabled={isSubmitting} className='my-4 mb-5'>
+              {isSubmitting ? 'Submitting...' : 'Submit'}
+            </Button>
+          </div>
         </div>
       </Form>
     </div>
