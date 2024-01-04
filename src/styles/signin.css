@@ -4,14 +4,14 @@
   }
 
   .login-section{
-    background-image: url("../assets/pexels-justin-wolfert-14261918.jpg");
+    background-image: url("../assets/home-bg.jpg");
     background-size: cover;
 
   }
 
   .login-form{
     width: 45%;
-    background-color: rgba(255, 255, 255, 0.7); 
+    background-color: rgba(255, 255, 255, 0.5); 
     padding: 3%;
     border-radius: 50px;
     border: 3px solid rgb(255, 255, 255);
