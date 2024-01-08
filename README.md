@@ -47,15 +47,14 @@ Welcome to my blog website! This platform allows users to log in, create, edit, 
 
 ## User and Admin Credentials:
 
-- **For Accessing Admin Contact me:**
-  - **Email:** emmanuel26112000@gmail.com
-  - **Whatsapp:** 9445482366
-  - **Linkedin:** www.linkedin.com/in/emmanuel-b-b5145593
-
+- **Admin Credentials:**
+  - **Email:** admin@gmail.com
+  - **Password:** 123
 
 - **Default User Credentials:**
-  - **Email:** emmanuel26112000@gmail.com
+  - **Email:** user@gmail.com
   - **Password:** 123
+
 
 ## Usage:
 
